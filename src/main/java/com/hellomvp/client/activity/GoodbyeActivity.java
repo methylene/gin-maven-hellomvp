@@ -3,20 +3,22 @@ package com.hellomvp.client.activity;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.hellomvp.client.mvp.PlaceHolder;
+import com.hellomvp.client.place.GoodbyePlace;
 import com.hellomvp.client.ui.GoodbyeViewImpl;
 
-public class GoodbyeActivity extends AbstractActivity {
-  // Name that will be appended to "Good-bye, "
-  private final String name;
+import javax.inject.Inject;
 
-  public GoodbyeActivity(String name) {
-    this.name = name;
-  }
+public class GoodbyeActivity extends AbstractActivity {
+
+  @Inject
+  private PlaceHolder placeHolder;
 
   @Override
   public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
     GoodbyeViewImpl goodbyeView = new GoodbyeViewImpl();
-    goodbyeView.setName(name);
+    GoodbyePlace currentPlace = (GoodbyePlace) placeHolder.getCurrentPlace();
+    goodbyeView.setName(currentPlace.getGoodbyeName());
     containerWidget.setWidget(goodbyeView.asWidget());
   }
 }

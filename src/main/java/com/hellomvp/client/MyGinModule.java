@@ -10,8 +10,11 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
+import com.hellomvp.client.activity.GoodbyeActivity;
+import com.hellomvp.client.activity.HelloActivity;
 import com.hellomvp.client.mvp.AppActivityMapper;
 import com.hellomvp.client.mvp.AppPlaceHistoryMapper;
+import com.hellomvp.client.mvp.PlaceHolder;
 import com.hellomvp.client.place.HelloPlace;
 
 import javax.inject.Singleton;
@@ -73,6 +76,9 @@ public class MyGinModule extends AbstractGinModule {
     bind(ActivityManager.class).toProvider(MyActivityManagerProvider.class).in(Singleton.class);
     bind(PlaceHistoryHandler.class).toProvider(MyPlaceHistoryHandlerProvider.class).in(Singleton.class);
     bind(AppWidget.class).in(Singleton.class);
+    bind(PlaceHolder.class).in(Singleton.class);
+    bind(HelloActivity.class).in(Singleton.class);
+    bind(GoodbyeActivity.class).in(Singleton.class);
   }
 
 }

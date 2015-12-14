@@ -5,20 +5,22 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.hellomvp.client.mvp.PlaceHolder;
+import com.hellomvp.client.place.GoodbyePlace;
 import com.hellomvp.client.place.HelloPlace;
 import com.hellomvp.client.ui.HelloView;
 import com.hellomvp.client.ui.HelloViewImpl;
 
+import javax.inject.Inject;
+
 public class HelloActivity extends AbstractActivity implements
     HelloView.Presenter {
-  // Name that will be appended to "Hello,"
-  private String name;
+
+  @Inject
   private PlaceController placeController;
 
-  public HelloActivity(HelloPlace place, PlaceController placeController) {
-    this.name = place.getHelloName();
-    this.placeController = placeController;
-  }
+  @Inject
+  private PlaceHolder placeHolder;
 
   /**
    * Invoked by the ActivityManager to start a new Activity
@@ -26,7 +28,8 @@ public class HelloActivity extends AbstractActivity implements
   @Override
   public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
     HelloView helloView = HelloViewImpl.create();
-    helloView.setName(name);
+    HelloPlace currentPlace = (HelloPlace) placeHolder.getCurrentPlace();
+    helloView.setName(currentPlace.getHelloName());
     helloView.setPresenter(this);
     containerWidget.setWidget(helloView.asWidget());
   }

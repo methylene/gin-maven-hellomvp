@@ -3,7 +3,6 @@ package com.hellomvp.client.place;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-//public class HelloPlace extends ActivityPlace<HelloActivity>
 public class HelloPlace extends Place {
   private String helloName;
 
@@ -29,15 +28,4 @@ public class HelloPlace extends Place {
 
   }
 
-//	@Override
-//	protected Place getPlace(String token)
-//	{
-//		return new HelloPlace(token);
-//	}
-//
-//	@Override
-//	protected Activity getActivity()
-//	{
-//		return new HelloActivity("David");
-//	}
 }

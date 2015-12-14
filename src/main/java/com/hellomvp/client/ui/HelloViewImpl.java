@@ -1,7 +1,6 @@
 package com.hellomvp.client.ui;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -11,7 +10,6 @@ import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.hellomvp.client.place.GoodbyePlace;
-import com.hellomvp.client.place.UsersPlace;
 
 public class HelloViewImpl extends Composite implements HelloView {
 //  private static HelloViewImplUiBinder uiBinder = GWT.create(HelloViewImplUiBinder.class);
@@ -20,10 +18,11 @@ public class HelloViewImpl extends Composite implements HelloView {
   }
 
   @UiField
-  DivElement nameSpan;
+  SpanElement nameSpan;
 
   @UiField
   Anchor goodbyeLink;
+
   private Presenter listener;
 
   public static HelloViewImpl create() {
